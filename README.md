@@ -4,6 +4,4 @@
 即选择出源图像中不同的聚焦位置合成一张全局清晰图像。
 为提高网络的理解能力和效率，该算法构造聚焦图像作为训练数据，
 并且网络采用了稠密连接和1x1卷积核。
-<img src="https://github.com/littlebaba/SF_MFIF/blob/master/screenshot/totalframe.png" width='600'>
-
-hh
+<img src="https://github.com/littlebaba/SF_MFIF/blob/master/screenshot/%E6%80%BB%E6%A1%86%E6%9E%B6%E5%9B%BE.png" width='600'>
