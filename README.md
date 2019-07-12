@@ -1,7 +1,14 @@
-# 基于监督学习的全卷积神经网络多聚焦融合算法
-使用pytorch实现的一种基于监督学习的全卷积神经网络多聚焦图像融合算法。
-该算法旨在使神经网络学习到一个源图像不同聚焦区域的互补关系，
-即选择出源图像中不同的聚焦位置合成一张全局清晰图像。
-为提高网络的理解能力和效率，该算法构造聚焦图像作为训练数据，
-并且网络采用了稠密连接和1x1卷积核。
+# Fully Convolutional network multi-focus image fusion algorithm based 
+To improve the quality of multi-focus image fusion, a supervised learning based multi-focus image fusion algorithm based on fully convolutional network is proposed. The aim of this algorithm is to make the neural network learn the complementary relationship between different focusing areas of source images, that is, to select different focusing positions of the source image to synthesize a global clear image. In this algorithm, focusing images are constructed as training data, and dense connection and 1×1 convolution are used in the network to improve the understanding ability and efficiency of the network. The experiment shows that the proposed algorithm is superior to other contrast algorithms in both subjective visual evaluation and objective evaluation, and the quality of image fusion is significantly improved.
 <img src="https://github.com/littlebaba/SF_MFIF/blob/master/screenshot/totalframe.png" width='600'>
+## Prerequisites
+- Python 3.6
+- CPU or NVIDIA GPU +CUDA CUDNN
+## Getting Started
+### Installation
+- clone this repo:
+~~~bash
+git clone git@github.com:littlebaba/SF_MFIF.git
+cd SF_MFIF
+~~~
+- Install [PyTorch](http://pytorch.org and) 0.4+ and other dependencies (e.g., torchvision, [visdom](https://github.com/facebookresearch/visdom) and [dominate](https://github.com/Knio/dominate)).
