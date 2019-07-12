@@ -10,5 +10,6 @@ To improve the quality of multi-focus image fusion, a supervised learning based 
 ~~~bash
 git clone git@github.com:littlebaba/SF_MFIF.git
 cd SF_MFIF
+run train 
 ~~~
 - Install [PyTorch](http://pytorch.org and) 0.4+ and other dependencies (e.g., torchvision, [visdom](https://github.com/facebookresearch/visdom) and [dominate](https://github.com/Knio/dominate)).
