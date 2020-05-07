@@ -30,13 +30,13 @@ def test():
 
         model.set_input(data)
         model.test()
-        mse, psrn, uqi, ssim, scc, vifp = np.array(list(pytorch_metric.metric(model.left, model.output).values())) * 0.5 + \
-                                          np.array(list(pytorch_metric.metric(model.right, model.output).values())) * 0.5
-        test_msg = f'MSE: {mse}, PSRN: {psrn}, UQI: {uqi}, SSIM: {ssim}, SCC: {scc}, VIFP: {vifp}'
-        print(test_msg)
+        # mse, psrn, uqi, ssim, scc, vifp = np.array(list(pytorch_metric.metric(model.left, model.output).values())) * 0.5 + \
+        #                                   np.array(list(pytorch_metric.metric(model.right, model.output).values())) * 0.5
+        # test_msg = f'MSE: {mse}, PSRN: {psrn}, UQI: {uqi}, SSIM: {ssim}, SCC: {scc}, VIFP: {vifp}'
+        # print(test_msg)
         visuals = model.get_currnet_visuals()
         img_path = model.get_image_paths()
-        print('processing (%04d)-th image... %s' % (i, img_path))
+        # print('processing (%04d)-th image... %s' % (i, img_path))
         visualizer.save_image(webpage, i, visuals, img_path)
     e = time.time()
     print('Time consuming is %f' % ((e - s) / 27))
