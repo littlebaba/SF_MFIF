@@ -31,6 +31,6 @@ def make_dataset(dir,is_direct_dir,isTrain,set_dataset_max=float('inf')):
     if isTrain:
         temp=sorted(image,key=lambda x:(int(re.findall(r'\d+',x.split('/')[-1])[0]) ,x.split('/')[-1].split('_')[-1]))
     else:
-        #temp=sorted(image) #测试数据为dir=E:\图像数据库\多聚焦数据库 时调用
-        temp=sorted(image,key=lambda x:(int(re.findall(r'\d+',x.split('/')[-1])[0]) ,x.split('/')[-1].split('_')[-1]))#测试数据为dir=E:\matPro\duishuanfangduojujiao\original时调用
+        temp=sorted(image) #测试数据为dir=E:\图像数据库\多聚焦数据库 时调用
+        # temp=sorted(image,key=lambda x:(int(re.findall(r'\d+',x.split('/')[-1])[0]) ,x.split('/')[-1].split('_')[-1]))#测试数据为dir=E:\matPro\duishuanfangduojujiao\original时调用
     return temp[:min(set_dataset_max,len(temp))]

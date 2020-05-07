@@ -68,7 +68,7 @@ def define_Mf(netMf='unet128',norm='batch',use_dropout=False,init_type='normal',
     if netMf=='unet128':
         net=UnetGenerator(1,1,7,norm_layer=norm_layer,use_dropout=use_dropout)
     elif netMf=='p2netV1':
-        net=P2netGenerator(1,1,norm_layer=None,use_dropout=False)
+        net=P2netGenerator(3,3,norm_layer=None,use_dropout=False)
     elif netMf=='p2netV2':
         net=P2netGeneratorV2(1,1,norm_layer=None,use_dropout=False)
     elif netMf=='p2netV3':
@@ -158,6 +158,7 @@ class P2netGenerator(nn.Module):
         self.ddp2conv=nn.Conv2d(32,output_nc,3)
         
         lkReLU=ReLU(True)
+        # lkReLU=torch.nn.functional.ge
         sigmoid=Sigmoid()
         rpad=ConstantPad2d(1,0)
         
@@ -174,20 +175,12 @@ class P2netGenerator(nn.Module):
         cat1=torch.cat([l,r],1)
         cat2=torch.cat([self.prel[:2](left),self.rdp1(cat1),self.prer[:2](right)],1)
         cat3=torch.cat([l,self.rdp2(cat2),r],1)
-        return self.dd(cat3)
+        return (self.dd(cat3)+1)/2.0
         
 
 class P2netGeneratorV2(nn.Module):
     """V2: Create a network for multi-focus images fusion."""
     def __init__(self,input_nc,output_nc,norm_layer=None,use_dropout=False):
-        """Construct the generator of this network.
-        
-        Parameters:
-            input_nc (int) -- the number of channels that the network'input.
-            output_nc (int) -- the number of channels that the network'output.
-            norm_layer (Norm2d) -- the normalization layer.
-            use_dropout (bool) -- if use dropout layer.
-        """
         super(P2netGeneratorV2, self).__init__()
               
         lkReLU=Tanh()
