@@ -1,9 +1,10 @@
+import time
+
 import torch
-from torchvision import transforms
 
 from models.base_model import BaseModel
 from . import networks
-
+import os
 
 class MfModel(BaseModel):
     """This class implement multi focus model for learning mapping from a pair of focus images to a source image.
@@ -47,7 +48,10 @@ class MfModel(BaseModel):
 
     def forward(self):
         """run forward pass"""
+        start = time.time()
         self.output = self.netMf(self.left, self.right)
+        use_time = time.time() - start
+        print(use_time)
 
     def backward_Mf(self):
         temp1 = 1 - self.critirion1(self.output, self.target)
